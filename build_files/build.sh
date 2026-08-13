@@ -15,25 +15,25 @@ cp -avf "/ctx/system_files"/. /
 dnf remove -y \
 	thunderbird \
 	konsole \
-	kate \
+	kate
 
 
 # this installs a package from fedora repos
 #
 # general apps
-dnf5 install -y \ 
+dnf5 install -y \
 	tmux \
-	kitty \
+	kitty
 
 # === cli: Cli packages ===
 
-dnf install -y \
+dnf5 install -y \
     zoxide \
     eza \
     htop \
     nvim \
     yazi \
-    git \
+    git
 
 
 # Use a COPR Example:
