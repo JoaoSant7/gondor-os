@@ -14,6 +14,8 @@ cp -avf "/ctx/system_files"/. /
 
 # this installs a package from fedora repos
 dnf5 install -y tmux
+dnf5 install -y kitty
+dnf5 install -y hyprland
 
 # Use a COPR Example:
 #
