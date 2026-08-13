@@ -12,8 +12,29 @@ cp -avf "/ctx/system_files"/. /
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
+dnf remove -y \
+	thunderbird \
+	konsole \
+	kate \
+
+
 # this installs a package from fedora repos
-dnf5 install -y tmux
+#
+# general apps
+dnf5 install -y \ 
+	tmux \
+	kitty \
+
+# === cli: Cli packages ===
+
+dnf install -y \
+    zoxide \
+    eza \
+    htop \
+    nvim \
+    yazi \
+    git \
+
 
 # Use a COPR Example:
 #
