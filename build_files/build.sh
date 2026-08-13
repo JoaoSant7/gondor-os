@@ -32,7 +32,6 @@ dnf5 install -y \
     eza \
     htop \
     nvim \
-    yazi \
     git
 
 
