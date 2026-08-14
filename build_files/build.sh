@@ -56,6 +56,10 @@ dnf5 install -y \
   noctalia \
   sddm
 
+# functionality
+dnf5 install -y \
+  fcitx5
+
 # cli
 dnf5 install -y \
   eza \
