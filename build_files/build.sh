@@ -16,37 +16,33 @@ cp -avf "/ctx/system_files"/. /
 dnf5 -y copr enable lionheartp/Hyprland
 
 dnf remove -y \
-	thunderbird \
-	konsole \
-	kate
-
+  thunderbird \
+  konsole \
+  kate
 
 # this installs a package from fedora repos
 #
 # general apps
 dnf5 install -y \
-	tmux \
-	kitty
+  tmux \
+  kitty
 
 dnf5 install -y \
-	hyprland
-	noctalia-git
+  hyprland \
+  noctalia-git
 
 # === cli: Cli packages ===
 
 dnf5 install -y \
-    zoxide \
-    zsh \
-    htop \
-    nvim \
-    git \
-    ripgrep \
-    fzf \
-    fd \
-    bat \
-    fastfetch
-
-
+  zoxide \
+  zsh \
+  htop \
+  nvim \
+  git \
+  ripgrep \
+  fzf \
+  fd \
+  fastfetch
 
 # Use a COPR Example:
 #
