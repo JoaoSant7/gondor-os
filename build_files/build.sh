@@ -9,17 +9,9 @@ cp -avf "/ctx/system_files"/. /
 dnf5 -y copr enable lionheartp/Hyprland
 
 ### Enable Terra Repo
-# Install the terra-release RPM first if it isn't pre-installed
-dnf5 install -y https://repos.fyra.labs/terra/terra-release.rpm || true
-
-# Safe sed execution (only run if file exists)
-if [ -f /etc/yum.repos.d/terra.repo ]; then
-  sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/terra.repo
-fi
-
-# Add the Brave repo
-curl -fsSLo /etc/yum.repos.d/brave-browser.repo \
-  https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+curl -fsSL https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo \
+  -o /etc/yum.repos.d/terra.repo
+dnf5 install -y terra-release
 
 # remove bluefin unecessary apps
 dnf5 remove -y \
@@ -29,7 +21,6 @@ dnf5 remove -y \
 
 # apps
 dnf5 install -y \
-  brave-origin \
   thunar
 
 # hyprland
