@@ -19,6 +19,15 @@ dnf5 remove -y \
   nautilus \
   ptyxis
 
+# remove gnome desktop
+dnf5 remove -y \
+  gnome-shell \
+  gnome- extensions \
+  gnome-session \
+  gnome-tour \
+  gnome-system-monitor \
+  gdm
+
 # apps
 dnf5 install -y \
   thunar
@@ -32,13 +41,15 @@ dnf5 install -y \
   qt6ct \
   xdg-desktop-portal-hyprland \
   xdg-desktop-portal-gtk \
-  noctalia-git
+  noctalia \
+  sddm
 
 # cli
 dnf5 install -y \
   eza \
   tmux \
   kitty \
+  ghostty \
   zoxide \
   zsh \
   htop \
