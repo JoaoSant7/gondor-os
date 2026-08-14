@@ -27,7 +27,7 @@ dnf5 remove -y \
   input-remapper \
   nautilus \
   ptyxis \
-  rygel-preferences \
+  rygel \
   malcontent-control \
   firewall-config
 
@@ -40,45 +40,6 @@ dnf5 remove -y \
   gnome-system-monitor \
   gdm
 
-# apps
-dnf5 install -y \
-  thunar \
-  brave-origin
-
-# hyprland
-dnf5 install -y \
-  hyprland \
-  hyprutils \
-  nwg-look \
-  qt5ct \
-  qt6ct \
-  xdg-desktop-portal-hyprland \
-  xdg-desktop-portal-gtk \
-  noctalia \
-  sddm
-
-# functionality
-dnf5 install -y \
-  fcitx5 \
-  loupe \
-  flameshot
-
-# cli
-dnf5 install -y \
-  eza \
-  tmux \
-  kitty \
-  ghostty \
-  zoxide \
-  zsh \
-  htop \
-  neovim \
-  git \
-  ripgrep \
-  fzf \
-  fd-find \
-  fastfetch
-
 # remove unecessary clutter
 rm -f /usr/share/applications/documentation.desktop
 rm -f /usr/share/applications/discourse.desktop
@@ -86,6 +47,51 @@ rm -f /usr/share/applications/system-update.desktop
 rm -f /usr/share/applications/org.gnome.tweaks.desktop
 rm -f /usr/share/applications/gnome-background-panel.desktop
 rm -f /usr/share/applications/gnome-about-panel.desktop
+
+# apps
+dnf5 install -y \
+  brave-origin \
+  thunar
+
+# hyprland
+dnf5 install -y \
+  hyprland \
+  hyprutils \
+  noctalia \
+  nwg-look \
+  qt5ct \
+  qt6ct \
+  sddm \
+  xdg-desktop-portal-gtk \
+  xdg-desktop-portal-hyprland
+
+# functionality
+dnf5 install -y \
+  fcitx5 \
+  flameshot \
+  kde-connect \
+  loupe \
+  mpv \
+  syncthing
+
+# cli
+dnf5 install -y \
+  eza \
+  fastfetch \
+  fd-find \
+  fzf \
+  ghostty \
+  git \
+  htop \
+  neovim \
+  ripgrep \
+  tmux \
+  zoxide \
+  zsh
+
+# theming
+dnf5 install -y \
+  adwaita-icon-theme
 
 systemctl enable podman.socket
 
