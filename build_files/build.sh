@@ -12,15 +12,13 @@ if [ -L /opt ]; then
   mkdir -p /opt
 fi
 
-### Enable COPR Repositories
+### Enable third party repos
 dnf5 -y copr enable lionheartp/Hyprland
 
-### Enable Terra Repo
 curl -fsSL https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo \
   -o /etc/yum.repos.d/terra.repo
 dnf5 install -y terra-release
 
-# Add the Brave repo
 curl -fsSLo /etc/yum.repos.d/brave-browser.repo \
   https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 
@@ -28,7 +26,10 @@ curl -fsSLo /etc/yum.repos.d/brave-browser.repo \
 dnf5 remove -y \
   input-remapper \
   nautilus \
-  ptyxis
+  ptyxis \
+  rygel-preferences \
+  malcontent-control \
+  firewall-config
 
 # remove gnome desktop
 dnf5 remove -y \
@@ -58,7 +59,8 @@ dnf5 install -y \
 
 # functionality
 dnf5 install -y \
-  fcitx5
+  fcitx5 \
+  loupe
 
 # cli
 dnf5 install -y \
@@ -79,6 +81,10 @@ dnf5 install -y \
 # remove unecessary clutter
 rm -f /usr/share/applications/documentation.desktop
 rm -f /usr/share/applications/discourse.desktop
+rm -f /usr/share/applications/system-update.desktop
+rm -f /usr/share/applications/org.gnome.tweaks.desktop
+rm -f /usr/share/applications/gnome-background-panel.desktop
+rm -f /usr/share/applications/gnome-about-panel.desktop
 
 systemctl enable podman.socket
 
