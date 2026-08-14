@@ -5,6 +5,13 @@ set -ouex pipefail
 # Copy local overlay files to root /
 cp -avf "/ctx/system_files"/. /
 
+# Ensure /opt is a real directory, not the OSTree /var/opt symlink,
+# so RPMs that install into /opt/* (like Brave) can unpack cleanly.
+if [ -L /opt ]; then
+  rm -f /opt
+  mkdir -p /opt
+fi
+
 ### Enable COPR Repositories
 dnf5 -y copr enable lionheartp/Hyprland
 
@@ -12,6 +19,10 @@ dnf5 -y copr enable lionheartp/Hyprland
 curl -fsSL https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo \
   -o /etc/yum.repos.d/terra.repo
 dnf5 install -y terra-release
+
+# Add the Brave repo
+curl -fsSLo /etc/yum.repos.d/brave-browser.repo \
+  https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 
 # remove bluefin unecessary apps
 dnf5 remove -y \
@@ -30,7 +41,8 @@ dnf5 remove -y \
 
 # apps
 dnf5 install -y \
-  thunar
+  thunar \
+  brave-origin
 
 # hyprland
 dnf5 install -y \
