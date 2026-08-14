@@ -12,6 +12,9 @@ cp -avf "/ctx/system_files"/. /
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
+# Third-party repos
+dnf5 -y copr enable lionheartp/Hyprland
+
 dnf remove -y \
 	thunderbird \
 	konsole \
@@ -23,7 +26,11 @@ dnf remove -y \
 # general apps
 dnf5 install -y \
 	tmux \
-	kitty 
+	kitty
+
+dnf5 install -y \
+	hyprland
+	noctalia-git
 
 # === cli: Cli packages ===
 
@@ -32,9 +39,7 @@ dnf5 install -y \
     zsh \
     htop \
     nvim \
-    stow \
     git \
-    tealdeer \
     ripgrep \
     fzf \
     fd \
