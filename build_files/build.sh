@@ -17,6 +17,10 @@ if [ -f /etc/yum.repos.d/terra.repo ]; then
   sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/terra.repo
 fi
 
+# Add the Brave repo
+curl -fsSLo /etc/yum.repos.d/brave-browser.repo \
+  https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+
 # remove bluefin unecessary apps
 dnf5 remove -y \
   input-remapper \
@@ -25,6 +29,7 @@ dnf5 remove -y \
 
 # apps
 dnf5 install -y \
+  brave-origin \
   thunar
 
 # hyprland
@@ -61,3 +66,4 @@ systemctl enable podman.socket
 
 # === cleanup ===
 dnf clean all && rm -rf /var/cache/dnf/*
+dnf5 clean all
