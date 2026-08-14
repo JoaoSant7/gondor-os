@@ -29,6 +29,7 @@ dnf5 install -y \
 
 dnf5 install -y \
     zoxide \
+    zsh \
     htop \
     nvim \
     stow \
