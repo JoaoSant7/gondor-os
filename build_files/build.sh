@@ -60,7 +60,8 @@ dnf5 install -y \
 # functionality
 dnf5 install -y \
   fcitx5 \
-  loupe
+  loupe \
+  flameshot
 
 # cli
 dnf5 install -y \
