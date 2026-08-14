@@ -23,16 +23,23 @@ dnf remove -y \
 # general apps
 dnf5 install -y \
 	tmux \
-	kitty
+	kitty 
 
 # === cli: Cli packages ===
 
 dnf5 install -y \
     zoxide \
-    eza \
     htop \
     nvim \
-    git
+    stow \
+    git \
+    tealdeer \
+    ripgrep \
+    fzf \
+    fd \
+    bat \
+    fastfetch
+
 
 
 # Use a COPR Example:
