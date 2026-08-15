@@ -122,7 +122,7 @@ EOF
 cp /ctx/assets/wallpapers/mountain-above-clouds.jpg \
   /usr/share/sddm/themes/sddm-astronaut-theme/Backgrounds/mountain-above-clouds.jpg
 
-sed -i 's|^Background=.*|Background="/usr/share/sddm/themes/sddm-astronaut-theme/Backgrounds/mountain-above-clouds.jpg"|' \
+sed -i 's|^Background=.*|Background="Backgrounds/mountain-above-clouds.jpg"|' \
   /usr/share/sddm/themes/sddm-astronaut-theme/Themes/astronaut.conf
 
 systemctl enable podman.socket
