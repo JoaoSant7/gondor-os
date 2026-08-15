@@ -36,9 +36,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/build.sh
 
-# Copy the file into the build context directory before running build.sh
-COPY assets/wallpapers/mountain-above-clouds.jpg /tmp/wallpaper.jpg
-
 ### LINTING
 ## Verify final image and contents are correct.
 RUN bootc container lint
