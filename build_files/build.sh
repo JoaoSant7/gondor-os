@@ -55,11 +55,12 @@ dnf5 install -y \
 
 # hyprland
 dnf5 install -y \
+  greetd \
   hyprland \
   hyprcursor \
   hyprutils \
   noctalia \
-  sddm \
+  noctalia-greeter \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-hyprland
 
@@ -98,30 +99,8 @@ dnf5 install -y \
   qt5ct \
   qt6ct
 
-# Clone the theme directly into the image's /usr
-git clone -b master --depth 1 \
-  https://github.com/Keyitdev/sddm-astronaut-theme.git \
-  /usr/share/sddm/themes/sddm-astronaut-theme
-
-# Install the fonts into the image
-cp -r /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
-fc-cache -f
-
-sed -i 's|^ConfigFile=.*|ConfigFile=Themes/astronaut.conf|' \
-  /usr/share/sddm/themes/sddm-astronaut-theme/metadata.desktop
-
-# Set the theme as default
-mkdir -p /etc/sddm.conf.d
-cat >/etc/sddm.conf.d/theme.conf <<'EOF'
-[Theme]
-Current=sddm-astronaut-theme
-EOF
-
-cat >/etc/sddm.conf.d/virtualkbd.conf <<'EOF'
-[General]
-InputMethod=qtvirtualkeyboard
-EOF
-
+sudo systemctl enable greetd
+sudo systemctl set-default graphical.target
 systemctl enable podman.socket
 
 # === cleanup ===
