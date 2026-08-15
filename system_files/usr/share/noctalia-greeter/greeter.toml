@@ -17,45 +17,45 @@ default = "Hyprland (uwsm-managed)"
 
 [user]
 # Opens the password step for this account on startup.
-default = "lysec"
+default = "pedro"
 
 [appearance]
 # Color scheme name: "Synced" (palette below or Sync sync.toml), or a builtin
 # like "Noctalia", "Catppuccin", .... Overrides last UI pick in sync.toml when set.
 scheme = "Synced"
 # Password mask: "default" (filled circles) or "random" (cycled glyph shapes).
-password_style = "random"
+password_style = "default"
 # Hide the Noctalia brand logo on the login screen.
-hide_logo = false
+hide_logo = true
 theme_mode = "dark"
 corner_radius_scale = 1.0
 # Optional; empty / omit keeps the greeter default font.
-font_family = "Inter"
+font_family = "Rubik"
 
 # Required for a declarative Synced look (same keys Sync writes under [appearance.palette]).
 # When complete, this wins over Sync's sync.toml appearance.
-[appearance.palette]
-primary = "#fff59b"
-on_primary = "#0e0e43"
-secondary = "#a9aefe"
-on_secondary = "#0e0e43"
-tertiary = "#9BFECE"
-on_tertiary = "#0e0e43"
-error = "#FD4663"
-on_error = "#0e0e43"
-surface = "#070722"
-on_surface = "#f3edf7"
-surface_variant = "#11112d"
-on_surface_variant = "#7c80b4"
-outline = "#21215F"
-shadow = "#070722"
-hover = "#9BFECE"
-on_hover = "#0e0e43"
+#[appearance.palette]
+#primary = "#fff59b"
+#on_primary = "#0e0e43"
+#secondary = "#a9aefe"
+#on_secondary = "#0e0e43"
+#tertiary = "#9BFECE"
+#on_tertiary = "#0e0e43"
+#error = "#FD4663"
+#on_error = "#0e0e43"
+#surface = "#070722"
+#on_surface = "#f3edf7"
+#surface_variant = "#11112d"
+#on_surface_variant = "#7c80b4"
+#outline = "#21215F"
+#shadow = "#070722"
+#hover = "#9BFECE"
+#on_hover = "#0e0e43"
 
-[appearance.wallpaper]
+#[appearance.wallpaper]
 # Absolute path, or color:#RRGGBB. fill_mode: center | crop | fit | stretch | repeat
-path = "/var/lib/noctalia-greeter/wallpaper.webp"
-fill_mode = "crop"
+#path = "/var/lib/noctalia-greeter/wallpaper.webp"
+#fill_mode = "crop"
 # fill_color = "#070722"
 
 # Optional per-connector wallpapers (overrides [appearance.wallpaper] for that output):
@@ -85,7 +85,7 @@ fill_mode = "crop"
 timeout = 300
 
 [cursor]
-theme = "Adwaita"
+theme = "Bibata-Modern-Ice"
 size = 24
 # Colon-separated search path when the theme is not under the default icon dirs.
 path = "/usr/share/icons"
