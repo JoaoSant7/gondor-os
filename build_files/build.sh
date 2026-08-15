@@ -14,18 +14,13 @@ fi
 
 ### Enable third party repos
 dnf5 -y copr enable lionheartp/Hyprland
-
-curl -fsSL https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo \
-  -o /etc/yum.repos.d/terra.repo
 dnf5 install -y terra-release
-
-curl -fsSLo /etc/yum.repos.d/brave-browser.repo \
-  https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 
 # apps
 dnf5 install -y \
   brave-origin \
-  thunar
+  thunar \
+  thunar-archive-plugin
 
 # hyprland
 dnf5 install -y \
