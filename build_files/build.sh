@@ -118,6 +118,13 @@ cat >/etc/sddm.conf.d/virtualkbd.conf <<'EOF'
 InputMethod=qtvirtualkeyboard
 EOF
 
+# Set custom wallpaper to sddm-astronaut-theme
+cp /ctx/assets/wallpapers/mountain-above-clouds.jpg \
+  /usr/share/sddm/themes/sddm-astronaut-theme/Backgrounds/mountain-above-clouds.jpg
+
+sed -i 's|^Background=.*|Background="/usr/share/sddm/themes/sddm-astronaut-theme/Backgrounds/mountain-above-clouds.jpg"|' \
+  /usr/share/sddm/themes/sddm-astronaut-theme/Themes/astronaut.conf
+
 systemctl enable podman.socket
 
 # === cleanup ===
