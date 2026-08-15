@@ -58,9 +58,6 @@ dnf5 install -y \
   hyprland \
   hyprutils \
   noctalia \
-  nwg-look \
-  qt5ct \
-  qt6ct \
   sddm \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-hyprland
@@ -68,6 +65,7 @@ dnf5 install -y \
 # functionality
 dnf5 install -y \
   fcitx5 \
+  file-roller \
   flameshot \
   kde-connect \
   loupe \
@@ -91,7 +89,34 @@ dnf5 install -y \
 
 # theming
 dnf5 install -y \
-  adwaita-icon-theme
+  adwaita-icon-theme \
+  qt6-qtsvg \
+  qt6-qtvirtualkeyboard \
+  qt6-qtmultimedia \
+  nwg-look \
+  qt5ct \
+  qt6ct
+
+# Clone the theme directly into the image's /usr
+git clone -b master --depth 1 \
+  https://github.com/Keyitdev/sddm-astronaut-theme.git \
+  /usr/share/sddm/themes/sddm-astronaut-theme
+
+# Install the fonts into the image
+cp -r /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
+fc-cache -f
+
+# Set the theme as default
+mkdir -p /etc/sddm.conf.d
+cat >/etc/sddm.conf.d/theme.conf <<'EOF'
+[Theme]
+Current=sddm-astronaut-theme
+EOF
+
+cat >/etc/sddm.conf.d/virtualkbd.conf <<'EOF'
+[General]
+InputMethod=qtvirtualkeyboard
+EOF
 
 systemctl enable podman.socket
 
