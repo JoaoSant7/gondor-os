@@ -56,6 +56,7 @@ dnf5 install -y \
 # hyprland
 dnf5 install -y \
   hyprland \
+  hyprcursor \
   hyprutils \
   noctalia \
   sddm \
