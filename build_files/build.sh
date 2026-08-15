@@ -58,6 +58,7 @@ dnf5 install -y \
   greetd \
   hyprland \
   hyprcursor \
+  hyprland-guiutils \
   hyprutils \
   noctalia \
   noctalia-greeter \
