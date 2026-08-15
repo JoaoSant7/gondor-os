@@ -106,6 +106,9 @@ git clone -b master --depth 1 \
 cp -r /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
 fc-cache -f
 
+sed -i 's|^ConfigFile=.*|ConfigFile=Themes/pixel_sakura_static.conf|' \
+  /usr/share/sddm/themes/sddm-astronaut-theme/metadata.desktop
+
 # Set the theme as default
 mkdir -p /etc/sddm.conf.d
 cat >/etc/sddm.conf.d/theme.conf <<'EOF'
@@ -117,13 +120,6 @@ cat >/etc/sddm.conf.d/virtualkbd.conf <<'EOF'
 [General]
 InputMethod=qtvirtualkeyboard
 EOF
-
-# Set custom wallpaper to sddm-astronaut-theme
-cp /ctx/assets/wallpapers/mountain-above-clouds.jpg \
-  /usr/share/sddm/themes/sddm-astronaut-theme/Backgrounds/mountain-above-clouds.jpg
-
-sed -i 's|^Background=.*|Background="Backgrounds/mountain-above-clouds.jpg"|' \
-  /usr/share/sddm/themes/sddm-astronaut-theme/Themes/astronaut.conf
 
 systemctl enable podman.socket
 
