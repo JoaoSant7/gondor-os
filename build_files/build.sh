@@ -106,7 +106,7 @@ git clone -b master --depth 1 \
 cp -r /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
 fc-cache -f
 
-sed -i 's|^ConfigFile=.*|ConfigFile=Themes/pixel_sakura_static.conf|' \
+sed -i 's|^ConfigFile=.*|ConfigFile=Themes/astronaut.conf|' \
   /usr/share/sddm/themes/sddm-astronaut-theme/metadata.desktop
 
 # Set the theme as default
