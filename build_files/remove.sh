@@ -3,7 +3,6 @@ set -ouex pipefail
 
 # remove bluefin unecessary apps
 dnf5 remove -y \
-  gnome-color-manager \
   input-remapper \
   nautilus \
   ptyxis \
@@ -15,9 +14,9 @@ dnf5 remove -y \
 
 # remove gnome desktop
 dnf5 remove -y \
-  gnome-disks \
+  gnome-color-manager \
+  gnome-disk-utility \
   gnome-shell \
-  gnome-extensions \
   gnome-session \
   gnome-tour \
   gnome-system-monitor \
@@ -30,12 +29,9 @@ dnf5 remove -y \
   gnome-control-center \
   gnome-control-center-filesystem \
   gnome-tweaks \
-  gnome-color-manager \
-  gnome-disk-utility \
   gnome-backgrounds \
   desktop-backgrounds-gnome \
   f44-backgrounds-gnome \
-  gnome-user-docs \
   gnome-app-list \
   gnome-menus \
   gnome-user-share \
