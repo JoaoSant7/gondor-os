@@ -37,8 +37,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/repos.sh && \
     /ctx/fix-opt.sh && \
-    /ctx/install.sh && \
     /ctx/remove.sh && \
+    /ctx/install.sh && \
     /ctx/services.sh && \
     /ctx/cleanup.sh
 
