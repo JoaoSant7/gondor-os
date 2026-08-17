@@ -46,10 +46,7 @@ dnf5 install -y \
 
 # theming
 dnf5 install -y \
-  adwaita-icon-theme \
-  qt6-qtsvg \
-  qt6-qtvirtualkeyboard \
-  qt6-qtmultimedia \
+  adw-gtk3-theme \
   nwg-look \
   qt5ct \
   qt6ct
