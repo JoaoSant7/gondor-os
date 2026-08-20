@@ -35,7 +35,7 @@ dnf5 install -y \
   fastfetch \
   fd-find \
   fzf \
-  ghostty \
+  kitty \
   git \
   htop \
   neovim \
@@ -50,3 +50,6 @@ dnf5 install -y \
   nwg-look \
   qt5ct \
   qt6ct
+
+log "Adding Rohan OS just recipes"
+echo "import \"/usr/share/rohanos/just/rohan.just\"" >>/usr/share/ublue-os/justfile
