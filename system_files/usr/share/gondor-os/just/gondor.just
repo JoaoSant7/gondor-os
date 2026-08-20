@@ -1,5 +1,5 @@
 # Install my personal homebrew packages
-rohan-install-brews:
+gondor-install-brews:
     #!/usr/bin/env bash
     set -euo pipefail
 
@@ -8,7 +8,7 @@ rohan-install-brews:
     echo "Homebrews installation complete."
 
 # Install my personal flatpaks
-rohan-install-flatpaks:
+gondor-install-flatpaks:
     #!/usr/bin/env bash
     set -euo pipefail
 
