@@ -31,17 +31,10 @@ dnf5 install -y \
 
 # cli
 dnf5 install -y \
-  eza \
-  fastfetch \
-  fd-find \
-  fzf \
   kitty \
   git \
-  htop \
   neovim \
-  ripgrep \
   tmux \
-  zoxide \
   zsh
 
 # theming
