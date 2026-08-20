@@ -1,7 +1,7 @@
 set dotenv-filename := "image-template.env"
 set dotenv-load
 
-export image_name := env("IMAGE_NAME", "amyos")
+export image_name := env("IMAGE_NAME", "gondor-os")
 export default_tag := env("DEFAULT_TAG", "latest")
 export repo_organization := env_var("REPO_ORGANIZATION")
 export image_desc := env_var("IMAGE_DESC")
