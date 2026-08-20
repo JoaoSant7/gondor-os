@@ -5,6 +5,7 @@ COPY build_files /
 # Base Image
 FROM ghcr.io/ublue-os/bluefin-nvidia-open:stable AS rohan-os
 COPY system_files/etc/ etc
+COPY system_files/usr/ usr
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:testing
