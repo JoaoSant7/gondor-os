@@ -52,4 +52,4 @@ dnf5 install -y \
   qt6ct
 
 echo "Adding Rohan OS just recipes"
-echo "import \"/usr/share/rohanos/just/rohan.just\"" >>/usr/share/ublue-os/justfile
+echo "import \"/usr/share/rohanos/just/rohan.just\"" >>/usr/share/ublue-os/just/60-custom.just
