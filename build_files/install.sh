@@ -44,5 +44,5 @@ dnf5 install -y \
   qt5ct \
   qt6ct
 
-echo "Adding Rohan OS just recipes"
-echo "import \"/usr/share/rohanos/just/rohan.just\"" >>/usr/share/ublue-os/just/60-custom.just
+echo "Adding Gondor OS just recipes"
+echo "import \"/usr/share/gondor-os/just/gondor.just\"" >>/usr/share/ublue-os/just/60-custom.just
