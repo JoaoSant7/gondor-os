@@ -15,4 +15,3 @@ gondor-install-flatpaks:
     echo "Installing Flatpaks..."
     xargs -a <(curl --retry 3 -sL https://raw.githubusercontent.com/joaosant7/gondor-os/main/repo_files/flatpaks) flatpak --system -y install
     echo "Flatpaks installation complete."
-
