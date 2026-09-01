@@ -10,14 +10,18 @@ dnf5 install -y \
 # hyprland
 dnf5 install -y \
   greetd \
-  hyprland \
-  hyprcursor \
-  hyprland-guiutils \
-  hyprutils \
   noctalia \
   noctalia-greeter \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-hyprland
+
+# hyprland
+#dnf5 install -y \
+#  hyprland \
+#  hyprcursor \
+#  hyprland-guiutils \
+#  hyprutils \
+#  xdg-desktop-portal-hyprland
 
 # functionality
 dnf5 install -y \
