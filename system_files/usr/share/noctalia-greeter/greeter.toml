@@ -13,7 +13,7 @@
 [session]
 # Exact Name= from the session .desktop (same as `noctalia-greeter sessions` / the picker).
 # Not the .desktop basename — e.g. "Hyprland (uwsm-managed)", not "hyprland-uwsm".
-default = "Hyprland"
+default = "Niri"
 
 [user]
 # Opens the password step for this account on startup.
