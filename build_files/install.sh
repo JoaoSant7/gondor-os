@@ -7,21 +7,19 @@ dnf5 install -y \
   thunar \
   thunar-archive-plugin
 
-# hyprland
+# niri
 dnf5 install -y \
   greetd \
-  noctalia \
+  niri \
+  noctalia-git \
   noctalia-greeter \
-  xdg-desktop-portal-gtk \
-  xdg-desktop-portal-hyprland
+  xdg-desktop-portal-gtk
 
-# hyprland
+# hyprland + noctalia (via lionheartp/Hyprland copr meta package)
 #dnf5 install -y \
-#  hyprland \
-#  hyprcursor \
-#  hyprland-guiutils \
-#  hyprutils \
-#  xdg-desktop-portal-hyprland
+# noctalia-hyprland-meta \
+#hyprland-guiutils \
+#hyprutils
 
 # functionality
 dnf5 install -y \
