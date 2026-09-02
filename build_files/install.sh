@@ -26,6 +26,7 @@ dnf5 install -y \
   fcitx5 \
   file-roller \
   flameshot \
+  kanshi \
   kde-connect \
   loupe \
   mpv \
