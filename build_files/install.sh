@@ -11,7 +11,7 @@ dnf5 install -y \
 dnf5 install -y \
   greetd \
   niri \
-  noctalia \
+  noctalia-git \
   noctalia-greeter \
   xdg-desktop-portal-gtk
 
