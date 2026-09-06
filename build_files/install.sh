@@ -5,7 +5,9 @@ set -ouex pipefail
 dnf5 install -y \
   brave-origin \
   thunar \
-  thunar-archive-plugin
+  thunar-archive-plugin \
+  zathura \
+  zathura-pdf-poppler
 
 # niri
 dnf5 install -y \
@@ -33,7 +35,7 @@ dnf5 install -y \
   mpv \
   syncthing
 
-# functionality
+# screenshot
 dnf5 install -y \
   grim \
   slurp \
