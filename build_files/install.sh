@@ -33,6 +33,12 @@ dnf5 install -y \
   mpv \
   syncthing
 
+# functionality
+dnf5 install -y \
+  grim \
+  slurp \
+  satty
+
 # cli
 dnf5 install -y \
   kitty \
