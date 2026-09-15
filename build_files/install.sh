@@ -4,6 +4,8 @@ set -ouex pipefail
 # apps
 dnf5 install -y \
   brave-origin \
+  dolphin \
+  dolphin-plugins \
   thunar \
   thunar-archive-plugin \
   zathura \
