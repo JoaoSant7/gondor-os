@@ -85,10 +85,10 @@ font_family = "Rubik"
 timeout = 300
 
 [cursor]
-theme = "Adwaita"
+theme = "Bibata-Modern-Ice"
 size = 24
 # Colon-separated search path when the theme is not under the default icon dirs.
-path = "/usr/share/icons"
+path = "/var/home/pedro/.local/share/icons"
 
 [keyboard]
 # Comma-separated for multiple layouts.
