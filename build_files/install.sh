@@ -12,7 +12,6 @@ dnf5 install -y \
 # niri
 dnf5 install -y \
   greetd \
-  niri \
   noctalia \
   noctalia-greeter \
   xdg-desktop-portal-gtk \
@@ -20,10 +19,11 @@ dnf5 install -y \
   gnome-keyring
 
 # hyprland + noctalia (via lionheartp/Hyprland copr meta package)
-#dnf5 install -y \
-# noctalia-hyprland-meta \
-#hyprland-guiutils \
-#hyprutils
+dnf5 install -y \
+  hyprland \
+  hyprland-guiutils \
+  hyprutils \
+  xdg-desktop-portal-hyprland
 
 # functionality
 dnf5 install -y \
