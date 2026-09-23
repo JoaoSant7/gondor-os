@@ -9,7 +9,7 @@ dnf5 install -y \
   zathura \
   zathura-pdf-poppler
 
-# niri
+# noctalia
 dnf5 install -y \
   greetd \
   noctalia \
