@@ -1,6 +1,9 @@
 #!/bin/bash
 set -ouex pipefail
 
+dnf5 -y copr enable lionheartp/Hyprland
+#dnf5 install -y terra-release
+
 # apps
 dnf5 install -y \
   brave-origin \
@@ -16,13 +19,17 @@ dnf5 install -y \
   noctalia-greeter \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-gnome \
-  gnome-keyring
+  gnome-keyring \
+  gnome-keyring-pam
 
 # hyprland + noctalia (via lionheartp/Hyprland copr meta package)
 dnf5 install -y \
   hyprland \
+  hyprland-uwsm \
   hyprland-guiutils \
   hyprutils \
+  niri \
+  uwsm \
   xdg-desktop-portal-hyprland
 
 # functionality

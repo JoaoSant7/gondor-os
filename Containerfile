@@ -36,11 +36,10 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/repos.sh && \
-    /ctx/remove.sh && \
-    /ctx/install.sh && \
-    /ctx/services.sh && \
-    /ctx/cleanup.sh
+    bash /ctx/00-remove-kde.sh && \
+    bash /ctx/01-install.sh && \
+    bash /ctx/02-cleanup.sh && \
+    bash /ctx/03-services.sh
 
 ### LINTING
 ## Verify final image and contents are correct.
