@@ -1,90 +1,137 @@
 #!/usr/bin/env bash
-set -oue pipefail
+set -xeuo pipefail
 
-echo "Removing GNOME leftovers, input methods, and unused services..."
-
-# remove bluefin unnecessary apps
+# Remove KDE Plasma core desktop environment
 dnf5 remove -y \
-  input-remapper \
-  nautilus \
-  nautilus-extensions \
-  orca \
-  ptyxis \
-  rygel \
-  malcontent-control \
-  firewall-config \
-  nwg-panel \
-  fish
+    plasma-desktop \
+    plasma-workspace \
+    plasma-workspace-wallpapers \
+    kwin \
+    kwin-common \
+    kscreen \
+    kscreenlocker \
+    sddm \
+    kde-settings \
+    kde-settings-plasma \
+    plasma-login-manager \
+    plasma-welcome \
+    plasma-welcome-fedora \
+    || true
 
-# remove gnome desktop
+# Remove Plasma system components
 dnf5 remove -y \
-  gnome-autoar \
-  gnome-color-manager \
-  gnome-disk-utility \
-  gnome-shell \
-  gnome-session \
-  gnome-tour \
-  gnome-system-monitor \
-  gnome-user-docs \
-  gdm \
-  gnome-shell-common \
-  mutter \
-  mutter-common \
-  gnome-settings-daemon \
-  gnome-control-center \
-  gnome-control-center-filesystem \
-  gnome-tweaks \
-  gnome-backgrounds \
-  desktop-backgrounds-gnome \
-  f44-backgrounds-gnome \
-  gnome-app-list \
-  gnome-menus \
-  gnome-user-share \
-  gnome-remote-desktop \
-  gnome-epub-thumbnailer \
-  gnome-online-accounts \
-  gnome-online-accounts-libs \
-  gnome-bluetooth \
-  gnome-bluetooth-libs \
-  gweather-locations \
-  gweather-locations-common
+    plasma-breeze \
+    plasma-breeze-common \
+    plasma-breeze-qt5 \
+    plasma-breeze-qt6 \
+    plasma-nm \
+    plasma-nm-openconnect \
+    plasma-nm-openvpn \
+    plasma-nm-vpnc \
+    plasma-pa \
+    plasma-systemmonitor \
+    plasma-systemsettings \
+    plasma-discover \
+    plasma-discover-notifier \
+    plasma-discover-rpm-ostree \
+    plasma-discover-libs \
+    plasma-drkonqi \
+    plasma-milou \
+    plasma-vault \
+    plasma-disks \
+    plasma-thunderbolt \
+    plasma-browser-integration \
+    kdeplasma-addons \
+    plasma-activities \
+    plasma-activities-stats \
+    plasma5support \
+    plasma-integration \
+    plasma-integration-qt5 \
+    plasma-lookandfeel-fedora \
+    || true
 
-# remove ibus
+# Remove KDE applications
 dnf5 remove -y \
-  ibus \
-  ibus-libs \
-  ibus-gtk2 \
-  ibus-gtk3 \
-  ibus-gtk4 \
-  ibus-panel \
-  ibus-setup \
-  ibus-typing-booster \
-  ibus-anthy \
-  ibus-hangul \
-  ibus-libpinyin \
-  ibus-m17n \
-  ibus-mozc \
-  ibus-unikey \
-  ibus-chewing
+    konsole \
+    dolphin \
+    kate \
+    kwrite \
+    ark \
+    spectacle \
+    kfind \
+    filelight \
+    kinfocenter \
+    kmenuedit \
+    khelpcenter \
+    kjournald \
+    kdebugsettings \
+    kde-connect \
+    kdeconnectd \
+    kde-connect-libs \
+    kwalletmanager5 \
+    pam-kwallet \
+    polkit-kde \
+    pinentry-qt \
+    || true
 
-# remove unnecessary clutter
+# Remove Bazzite-specific KDE packages
 dnf5 remove -y \
-  gsound \
-  malcontent \
-  malcontent-ui-libs \
-  papers-libs \
-  papers-previewer \
-  papers-thumbnailer \
-  yelp-libs \
-  yelp-xsl
+    steamdeck-kde-presets-desktop \
+    steamdeck-kde-presets \
+    krunner-bazaar \
+    rom-properties-kf6 \
+    kcm-fcitx5 \
+    xwaylandvideobridge \
+    || true
 
-# autoremove orphaned pkgs
-dnf5 autoremove -y || true
+# Remove IBus input method framework (auto-starts and shows KDE-specific notifications)
+# Users needing non-English input can reinstall ibus manually
+dnf5 remove -y \
+    ibus-xinit \
+    ibus-setup \
+    ibus-anthy \
+    ibus-anthy-python \
+    ibus-hangul \
+    ibus-libpinyin \
+    ibus-pinyin \
+    ibus-m17n \
+    ibus-typing-booster \
+    ibus-chewing \
+    ibus-table \
+    ibus-table-chinese \
+    ibus-table-chinese-cangjie \
+    ibus-table-chinese-quick \
+    ibus-qt \
+    || true
 
-# remove unnecessary clutter (desktop files)
-rm -f /usr/share/applications/documentation.desktop
-rm -f /usr/share/applications/discourse.desktop
-rm -f /usr/share/applications/system-update.desktop
-rm -f /usr/share/applications/org.gnome.tweaks.desktop
-rm -f /usr/share/applications/gnome-background-panel.desktop
-rm -f /usr/share/applications/gnome-about-panel.desktop
+# Remove KDE I/O and framework packages (not needed for COSMIC)
+dnf5 remove -y \
+    kio-admin \
+    kio-extras \
+    kio-gdrive \
+    kdenetwork-filesharing \
+    kf6-baloo-file \
+    kdecoration \
+    kdesu \
+    kde-cli-tools \
+    kde-gtk-config \
+    kde-inotify-survey \
+    kdegraphics-mobipocket \
+    kdegraphics-thumbnailers \
+    || true
+
+# Remove leftover Plasma session files
+rm -f /usr/share/wayland-sessions/plasma-steamos-wayland-oneshot.desktop
+rm -f /usr/share/xsessions/plasma-steamos-oneshot.desktop
+
+# Remove handheld-specific packages (not needed for desktop)
+# hhd = Handheld Daemon (crashes on desktop, only for Steam Deck/ROG Ally/etc)
+# steamdeck-dsp = Steam Deck audio DSP
+dnf5 remove -y \
+    hhd \
+    hhd-ui \
+    steamdeck-dsp \
+    || true
+
+# Autoremove runs in 03-cleanup-kde-frameworks.sh (after COSMIC install)
+# so that COSMIC's deps are marked explicit and protected.
