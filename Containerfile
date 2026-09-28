@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM ghcr.io/ublue-os/bluefin-nvidia-open:stable AS gondor-os
+FROM ghcr.io/ublue-os/bazzite-gnome-nvidia-open:stable AS gondor-os
 COPY system_files/etc/ etc
 COPY system_files/usr/ usr
 
