@@ -135,3 +135,10 @@ dnf5 remove -y \
 
 # Autoremove runs in 03-cleanup-kde-frameworks.sh (after COSMIC install)
 # so that COSMIC's deps are marked explicit and protected.
+
+# Remove all KDE Framework 5 libraries (COSMIC has no kf5 deps)
+dnf5 remove -y kf5-* || true
+
+# Remove orphaned Qt and other packages no longer required
+dnf5 autoremove -y || true
+
