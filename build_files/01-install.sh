@@ -28,7 +28,6 @@ dnf5 install -y \
   hyprland-uwsm \
   hyprland-guiutils \
   hyprutils \
-  niri \
   uwsm \
   xdg-desktop-portal-hyprland
 
@@ -37,7 +36,6 @@ dnf5 install -y \
   fcitx5 \
   file-roller \
   kanshi \
-  kde-connect \
   loupe \
   mpv \
   syncthing

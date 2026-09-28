@@ -7,9 +7,11 @@ dnf5 remove -y kf5-* || true
 # Remove orphaned Qt and other packages no longer required
 dnf5 autoremove -y || true
 
-dnf5 clean all
 rm -rf /var/lib/dnf/* /var/log/dnf*
 rm -rf /run/dnf /run/selinux-policy
 rm -rf /var/lib/greetd/.config
 rm -rf /tmp/*
+
+dnf5 clean all && rm -rf /var/cache/dnf/*
+
 ostree container commit
