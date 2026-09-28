@@ -1,6 +1,44 @@
 #!/usr/bin/env bash
 set -xeuo pipefail
 
+# pre script (removals)
+# Leftover Bazzite overlay files not owned by any RPM
+# Force Restart Waydroid entry + dead waydroid helper scripts/artwork
+rm -f /usr/share/applications/waydroid-container-restart.desktop
+rm -f /usr/libexec/waydroid-container-restart \
+  /usr/libexec/waydroid-container-start \
+  /usr/libexec/waydroid-container-stop \
+  /usr/libexec/waydroid-fix-controllers
+rm -rf /usr/share/applications/Waydroid
+# Discourse forum launcher
+rm -f /usr/share/applications/discourse.desktop
+# Bazzite Documentation launcher
+rm -f /usr/share/applications/bazzite-documentation.desktop
+# Bazzite System Update launcher (ujust update)
+rm -f /usr/share/applications/system-update.desktop
+
+# remove apps
+dnf remove -y \
+  lutris \
+  waydroid \
+  waydroid-selinux \
+  input-remapper \
+  mariadb \
+  mariadb-server \
+  mariadb-common \
+  mariadb-errmsg \
+  mariadb-connector-c \
+  mariadb-connector-c-config \
+  mariadb-backup \
+  mariadb-cracklib-password-check \
+  mariadb-gssapi-server \
+  rom-properties \
+  rom-properties-common \
+  rom-properties-kf6 \
+  rom-properties-utils \
+  bazzite-portal \
+  uupd
+
 # Remove KDE Plasma core desktop environment
 dnf5 remove -y \
   plasma-desktop \
@@ -132,9 +170,3 @@ dnf5 remove -y \
   hhd-ui \
   steamdeck-dsp ||
   true
-
-# Remove all KDE Framework 5 libraries (COSMIC has no kf5 deps)
-dnf5 remove -y kf5-* || true
-
-# Remove orphaned Qt and other packages no longer required
-dnf5 autoremove -y || true
