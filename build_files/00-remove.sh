@@ -36,8 +36,7 @@ dnf remove -y \
   rom-properties-common \
   rom-properties-kf6 \
   rom-properties-utils \
-  bazzite-portal \
-  uupd
+  bazzite-portal
 
 # Remove KDE Plasma core desktop environment
 dnf5 remove -y \
