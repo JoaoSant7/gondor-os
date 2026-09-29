@@ -18,6 +18,11 @@ mkdir -p /var/lib/greetd
 chown -R ${GREETD_UID}:${GREETD_GID} /var/lib/greetd
 chmod 750 /var/lib/greetd
 
+# Noctalia Greeter state directory
+mkdir -p /var/lib/noctalia-greeter
+chown -R ${GREETD_UID}:${GREETD_GID} /var/lib/noctalia-greeter
+chmod 750 /var/lib/noctalia-greeter
+
 systemctl enable greetd
 systemctl set-default graphical.target
 systemctl enable podman.socket
