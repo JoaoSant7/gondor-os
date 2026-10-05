@@ -8,9 +8,7 @@ dnf5 -y copr enable lionheartp/Hyprland
 dnf5 install -y \
   brave-origin \
   thunar \
-  thunar-archive-plugin \
-  zathura \
-  zathura-pdf-poppler
+  thunar-archive-plugin
 
 # noctalia
 dnf5 install -y \
@@ -34,9 +32,7 @@ dnf5 install -y \
 dnf5 install -y \
   file-roller \
   kanshi \
-  loupe \
-  mpv \
-  syncthing
+  mpv
 
 # screenshot
 dnf5 install -y \
