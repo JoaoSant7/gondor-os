@@ -25,7 +25,6 @@ dnf5 install -y \
 # hyprland + noctalia (via lionheartp/Hyprland copr meta package)
 dnf5 install -y \
   hyprland \
-  hyprland-uwsm \
   hyprland-guiutils \
   hyprutils \
   uwsm \
@@ -33,7 +32,6 @@ dnf5 install -y \
 
 # functionality
 dnf5 install -y \
-  fcitx5 \
   file-roller \
   kanshi \
   loupe \
@@ -58,7 +56,6 @@ dnf5 install -y \
 dnf5 install -y \
   adw-gtk3-theme \
   nwg-look \
-  qt5ct \
   qt6ct
 
 echo "Adding Gondor OS just recipes"
