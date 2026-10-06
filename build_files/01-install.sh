@@ -4,13 +4,17 @@ set -ouex pipefail
 dnf5 -y copr enable lionheartp/Hyprland
 #dnf5 install -y terra-release
 
+dnf5 install -y \
+  nix \
+  nix-daemon
+
 # apps
 dnf5 install -y \
   brave-origin \
   thunar \
   thunar-archive-plugin
 
-# apps
+# niri
 dnf5 install -y \
   niri
 
