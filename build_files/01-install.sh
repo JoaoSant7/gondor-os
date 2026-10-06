@@ -26,6 +26,7 @@ dnf5 install -y \
 
 # hyprland + noctalia (via lionheartp/Hyprland copr meta package)
 dnf5 install -y \
+  hyprland \
   hyprland-uwsm \
   hyprland-guiutils \
   hyprutils \
