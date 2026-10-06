@@ -26,4 +26,3 @@ chmod 750 /var/lib/noctalia-greeter
 systemctl enable greetd
 systemctl set-default graphical.target
 systemctl enable podman.socket
-systemctl enable nix-daemon
