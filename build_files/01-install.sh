@@ -10,6 +10,10 @@ dnf5 install -y \
   thunar \
   thunar-archive-plugin
 
+# apps
+dnf5 install -y \
+  niri
+
 # noctalia
 dnf5 install -y \
   greetd \
@@ -22,7 +26,7 @@ dnf5 install -y \
 
 # hyprland + noctalia (via lionheartp/Hyprland copr meta package)
 dnf5 install -y \
-  hyprland \
+  hyprland-uwsm \
   hyprland-guiutils \
   hyprutils \
   uwsm \
