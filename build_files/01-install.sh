@@ -1,8 +1,12 @@
 #!/bin/bash
 set -ouex pipefail
 
-dnf5 -y copr enable lionheartp/Hyprland
 #dnf5 install -y terra-release
+dnf5 -y copr enable lionheartp/Hyprland
+
+# Exclude Kitty and its subpackages from this COPR.
+dnf5 config-manager setopt \
+  'copr:copr.fedorainfracloud.org:lionheartp:Hyprland.excludepkgs=kitty*'
 
 # apps
 dnf5 install -y \
@@ -10,9 +14,14 @@ dnf5 install -y \
   thunar \
   thunar-archive-plugin
 
-# niri
+# hyprland + noctalia (via lionheartp/Hyprland copr meta package)
 dnf5 install -y \
-  niri
+  hyprland \
+  hyprland-uwsm \
+  hyprland-guiutils \
+  hyprutils \
+  uwsm \
+  xdg-desktop-portal-hyprland
 
 # noctalia
 dnf5 install -y \
@@ -23,15 +32,6 @@ dnf5 install -y \
   xdg-desktop-portal-gnome \
   gnome-keyring \
   gnome-keyring-pam
-
-# hyprland + noctalia (via lionheartp/Hyprland copr meta package)
-dnf5 install -y \
-  hyprland \
-  hyprland-uwsm \
-  hyprland-guiutils \
-  hyprutils \
-  uwsm \
-  xdg-desktop-portal-hyprland
 
 # functionality
 dnf5 install -y \
