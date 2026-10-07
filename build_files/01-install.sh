@@ -35,7 +35,6 @@ dnf5 install -y \
 dnf5 install -y \
   file-roller \
   kanshi \
-  mpv \
   gnome-keyring \
   gnome-keyring-pam
 
