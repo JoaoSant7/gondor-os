@@ -18,30 +18,26 @@ dnf5 install -y \
 dnf5 install -y \
   niri
 
-# hyprland + noctalia (via lionheartp/Hyprland copr meta package)
+# hyprland + noctalia (via lionheartp/Hyprland copr)
 dnf5 install -y \
   hyprland \
   hyprland-uwsm \
   hyprland-guiutils \
   hyprutils \
-  uwsm \
-  xdg-desktop-portal-hyprland
+  uwsm
 
 # noctalia
 dnf5 install -y \
-  greetd \
   noctalia-git \
-  noctalia-greeter \
-  xdg-desktop-portal-gtk \
-  xdg-desktop-portal-gnome \
-  gnome-keyring \
-  gnome-keyring-pam
+  noctalia-greeter
 
 # functionality
 dnf5 install -y \
   file-roller \
   kanshi \
-  mpv
+  mpv \
+  gnome-keyring \
+  gnome-keyring-pam
 
 # screenshot
 dnf5 install -y \
@@ -57,11 +53,21 @@ dnf5 install -y \
   tmux \
   zsh
 
+# greeter
+dnf5 install -y \
+  greetd
+
 # theming
 dnf5 install -y \
   adw-gtk3-theme \
   nwg-look \
   qt6ct
+
+# portals
+dnf5 install -y \
+  xdg-desktop-portal-gtk \
+  xdg-desktop-portal-gnome \
+  xdg-desktop-portal-hyprland
 
 echo "Adding Gondor OS just recipes"
 echo "import \"/usr/share/gondor-os/just/gondor.just\"" >>/usr/share/ublue-os/just/60-custom.just
