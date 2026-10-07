@@ -14,6 +14,10 @@ dnf5 install -y \
   thunar \
   thunar-archive-plugin
 
+# niri
+dnf5 install -y \
+  niri
+
 # hyprland + noctalia (via lionheartp/Hyprland copr meta package)
 dnf5 install -y \
   hyprland \
