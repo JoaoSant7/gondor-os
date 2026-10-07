@@ -1,28 +1,17 @@
 #!/bin/bash
 set -ouex pipefail
 
-# --- greetd user (UID/GID 955) ---
-# Required by /usr/lib/tmpfiles.d/greetd.conf (from greetd package).
-GREETD_UID=955
-GREETD_GID=955
-
-if ! grep -q "^greetd:" /usr/lib/passwd; then
-  echo "greetd:x:${GREETD_UID}:${GREETD_GID}:greetd daemon:/var/lib/greetd:/sbin/nologin" >>/usr/lib/passwd
-fi
-if ! grep -q "^greetd:" /usr/lib/group; then
-  echo "greetd:x:${GREETD_GID}:" >>/usr/lib/group
+# Reuse the package's boot-time account definition when available. A fallback
+# also covers packages that create greetd only in an RPM installation script.
+# sysusers preserves an existing account and allocates an ID only if missing.
+if ! grep -Eq '^[[:space:]]*u[[:space:]]+"?greetd"?[[:space:]]' /usr/lib/sysusers.d/*.conf; then
+  install -d -m 0755 /usr/lib/sysusers.d
+  cat >/usr/lib/sysusers.d/gondor-greetd.conf <<'EOF'
+u greetd - "greetd greeter" /var/lib/greetd /sbin/nologin
+EOF
 fi
 
-# greetd home
-mkdir -p /var/lib/greetd
-chown -R ${GREETD_UID}:${GREETD_GID} /var/lib/greetd
-chmod 750 /var/lib/greetd
-
-# Noctalia Greeter state directory
-mkdir -p /var/lib/noctalia-greeter
-chown -R ${GREETD_UID}:${GREETD_GID} /var/lib/noctalia-greeter
-chmod 750 /var/lib/noctalia-greeter
-
+# /var directories and the config link are created at boot by tmpfiles.
 systemctl enable greetd
 systemctl set-default graphical.target
 systemctl enable podman.socket
