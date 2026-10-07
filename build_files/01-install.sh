@@ -14,9 +14,9 @@ dnf5 install -y \
   thunar \
   thunar-archive-plugin
 
-# mango
+# niri
 dnf5 install -y \
-  mangowm
+  niri
 
 # hyprland + noctalia (via lionheartp/Hyprland copr meta package)
 dnf5 install -y \
