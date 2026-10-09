@@ -12,19 +12,21 @@ dnf5 config-manager setopt \
 dnf5 install -y \
   brave-origin \
   thunar \
-  thunar-archive-plugin
+  thunar-archive-plugin \
+  thunar-volman
 
 # niri
 dnf5 install -y \
   niri
 
 # hyprland + noctalia (via lionheartp/Hyprland copr)
-dnf5 install -y \
-  hyprland \
-  hyprland-uwsm \
-  hyprland-guiutils \
-  hyprutils \
-  uwsm
+#dnf5 install -y \
+#  hyprland \
+#  hyprland-uwsm \
+#  hyprland-guiutils \
+#  hyprutils \
+#  uwsm \
+#  xdg-desktop-portal-hyprland
 
 # noctalia
 dnf5 install -y \
@@ -65,8 +67,7 @@ dnf5 install -y \
 # portals
 dnf5 install -y \
   xdg-desktop-portal-gtk \
-  xdg-desktop-portal-gnome \
-  xdg-desktop-portal-hyprland
+  xdg-desktop-portal-gnome
 
 echo "Adding Gondor OS just recipes"
 echo "import \"/usr/share/gondor-os/just/gondor.just\"" >>/usr/share/ublue-os/just/60-custom.just
