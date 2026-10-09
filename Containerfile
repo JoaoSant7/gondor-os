@@ -4,28 +4,11 @@ COPY build_files /
 
 # Base Image
 FROM ghcr.io/ublue-os/bazzite-nvidia-open:stable AS gondor-os
-COPY system_files/etc/ etc
-COPY system_files/usr/ usr
+# Package repositories must be available before installation.
+COPY system_files/etc/yum.repos.d/ /etc/yum.repos.d/
 
-## Other possible base images include:
-# FROM ghcr.io/ublue-os/bazzite:testing
-# FROM ghcr.io/ublue-os/aurora:stable
-# FROM ghcr.io/ublue-os/bluefin-nvidia-open:stable
-# 
-# ... and so on, here are more base images
-# Universal Blue Images: https://github.com/orgs/ublue-os/packages
-# Fedora base image: quay.io/fedora/fedora-bootc:44
-# CentOS base images: quay.io/centos-bootc/centos-bootc:stream10
-
-### [IM]MUTABLE /opt
-## Some bootable images, like Fedora, have /opt symlinked to /var/opt, in order to
-## make it mutable/writable for users. However, some packages write files to this directory,
-## thus its contents might be wiped out when bootc deploys an image, making it troublesome for
-## some packages. Eg, google-chrome, docker-desktop.
-##
 ## Uncomment the following line if one desires to make /opt immutable and be able to be used
 ## by the package manager.
-
 RUN rm /opt && mkdir /opt
 
 ### MODIFICATIONS
@@ -38,8 +21,15 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     bash /ctx/00-remove.sh && \
     bash /ctx/01-install.sh && \
-    bash /ctx/02-cleanup.sh && \
-    bash /ctx/03-services.sh
+    bash /ctx/02-cleanup.sh
+
+# Apply image defaults after RPM installation and cleanup.
+COPY system_files/etc/ /etc/
+COPY system_files/usr/ /usr/
+
+RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    bash /ctx/03-services.sh && \
+    ostree container commit
 
 ### LINTING
 ## Verify final image and contents are correct.
