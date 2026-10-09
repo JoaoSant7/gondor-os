@@ -66,7 +66,6 @@ dnf5 install -y \
 dnf5 install -y \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-gnome \
-  xdg-desktop-portal-kde \
   xdg-desktop-portal-hyprland
 
 echo "Adding Gondor OS just recipes"
