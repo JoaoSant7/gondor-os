@@ -17,7 +17,9 @@ dnf5 install -y \
 
 # niri
 dnf5 install -y \
-  niri
+  niri \
+  xdg-desktop-portal-gtk \
+  xdg-desktop-portal-gnome
 
 # hyprland + noctalia (via lionheartp/Hyprland copr)
 #dnf5 install -y \
@@ -63,11 +65,6 @@ dnf5 install -y \
   adw-gtk3-theme \
   nwg-look \
   qt6ct
-
-# portals
-dnf5 install -y \
-  xdg-desktop-portal-gtk \
-  xdg-desktop-portal-gnome
 
 echo "Adding Gondor OS just recipes"
 echo "import \"/usr/share/gondor-os/just/gondor.just\"" >>/usr/share/ublue-os/just/60-custom.just
