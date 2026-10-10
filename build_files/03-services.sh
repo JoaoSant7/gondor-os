@@ -1,21 +1,10 @@
 #!/bin/bash
 set -ouex pipefail
 
-# Reuse the package's boot-time account definition when available. A fallback
-# also covers packages that create greetd only in an RPM installation script.
-# sysusers preserves an existing account and allocates an ID only if missing.
-if ! grep -Eq '^[[:space:]]*u[[:space:]]+"?greetd"?[[:space:]]' /usr/lib/sysusers.d/*.conf; then
-  install -d -m 0755 /usr/lib/sysusers.d
-  cat >/usr/lib/sysusers.d/gondor-greetd.conf <<'EOF'
-u greetd - "greetd greeter" /var/lib/greetd /sbin/nologin
-EOF
-fi
-
 # The Fedora SDDM RPM supplies sysusers and tmpfiles rules for /var/lib/sddm.
-# Noctalia's /var directories and config link are also created at boot.
-# Disable greetd's graphical.target dependency as well as its display-manager
-# alias before selecting SDDM. Do not start or stop services during the build.
-systemctl disable greetd.service
+# Prevent an old, locally enabled greetd from starting after an image upgrade.
+# Masking also works when the archived greeter package is not installed.
+systemctl mask greetd.service
 
 # Older Bazzite images can mount writable themes over our image-owned assets.
 if [[ -f /usr/lib/systemd/system/usr-share-sddm-themes.mount ]]; then
