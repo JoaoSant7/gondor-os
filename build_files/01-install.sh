@@ -31,7 +31,7 @@ dnf5 install -y \
 #  xdg-desktop-portal-hyprland
 
 # Noctalia desktop shell (the greeter is archived separately).
-dnf5 install -y noctalia-git
+dnf5 install -y noctalia
 
 # functionality
 dnf5 install -y \
