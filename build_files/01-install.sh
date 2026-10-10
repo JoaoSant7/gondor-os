@@ -21,7 +21,7 @@ dnf5 install -y \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-gnome
 
-# hyprland + noctalia (via lionheartp/Hyprland copr)
+# hyprland (via lionheartp/Hyprland copr)
 #dnf5 install -y \
 #  hyprland \
 #  hyprland-uwsm \
@@ -30,10 +30,8 @@ dnf5 install -y \
 #  uwsm \
 #  xdg-desktop-portal-hyprland
 
-# noctalia
-dnf5 install -y \
-  noctalia-git \
-  noctalia-greeter
+# Noctalia desktop shell (the greeter is archived separately).
+dnf5 install -y noctalia-git
 
 # functionality
 dnf5 install -y \
@@ -66,8 +64,7 @@ dnf5 install -y \
   qt6-qtwayland \
   qt6-qtsvg \
   qt6-qtvirtualkeyboard \
-  qt6-qtmultimedia \
-  greetd
+  qt6-qtmultimedia
 
 # theming
 dnf5 install -y \
