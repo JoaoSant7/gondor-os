@@ -13,5 +13,3 @@ rm -rf /var/lib/greetd/.config
 rm -rf /tmp/*
 
 dnf5 clean all && rm -rf /var/cache/dnf/*
-
-ostree container commit

@@ -1,0 +1,17 @@
+# SDDM merges these values over the preset selected in metadata.desktop.
+# The same overrides apply to every Astronaut preset. Empty values are ignored;
+# remove or comment a key to use its preset value. Use "false" for booleans.
+[General]
+ForceLastUser="true"
+PasswordFocus="true"
+
+# Appearance examples (uncomment to override the selected preset):
+# Font="Open Sans"
+# FontSize="13"
+# RoundCorners="20"
+# FormPosition="center"
+# HideVirtualKeyboard="true"
+# ScreenWidth="2560"
+# ScreenHeight="1440"
+# Background="file:///etc/sddm/astronaut/background.png"
+# DimBackground="0.2"

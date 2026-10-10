@@ -21,6 +21,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     bash /ctx/00-remove.sh && \
     bash /ctx/01-install.sh && \
+    bash /ctx/01-sddm-theme.sh && \
     bash /ctx/02-cleanup.sh
 
 # Apply image defaults after RPM installation and cleanup.
