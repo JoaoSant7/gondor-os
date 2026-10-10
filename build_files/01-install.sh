@@ -1,8 +1,7 @@
 #!/bin/bash
 set -ouex pipefail
 
-#dnf5 install -y terra-release -- terra is already included on bazzite
-#dnf5 -y copr enable lionheartp/Hyprland
+# Terra is already included in the Bazzite base; no additional repository is needed.
 
 # apps
 dnf5 install -y \
@@ -17,16 +16,7 @@ dnf5 install -y \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-gnome
 
-# hyprland (via lionheartp/Hyprland copr)
-#dnf5 install -y \
-#  hyprland \
-#  hyprland-uwsm \
-#  hyprland-guiutils \
-#  hyprutils \
-#  uwsm \
-#  xdg-desktop-portal-hyprland
-
-# Noctalia desktop shell (the greeter is archived separately).
+# Noctalia desktop shell.
 dnf5 install -y noctalia
 
 # functionality
@@ -50,23 +40,18 @@ dnf5 install -y \
   tmux \
   zsh
 
-# greeter
-# Use Fedora's generic Wayland backend: KWin is removed from this image.
-# Astronaut uses Qt 6 Quick, SVG, multimedia, and virtual keyboard modules.
-dnf5 install -y \
-  sddm \
-  sddm-wayland-generic \
-  qt6-qtdeclarative \
-  qt6-qtwayland \
-  qt6-qtsvg \
-  qt6-qtvirtualkeyboard \
-  qt6-qtmultimedia
-
 # theming
 dnf5 install -y \
   adw-gtk3-theme \
   nwg-look \
   qt6ct
+
+# Select the stable Terra package; dependencies can use the other base repos.
+dnf5 install -y --from-repo=terra noctalia-greeter
+dnf5 install -y greetd
+
+# Build-time RPM state is replaced by the system_files configuration afterward.
+rm -rf /var/lib/greetd/.config
 
 echo "Adding Gondor OS just recipes"
 echo "import \"/usr/share/gondor-os/just/gondor.just\"" >>/usr/share/ublue-os/just/60-custom.just

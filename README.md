@@ -319,9 +319,11 @@ These are images derived from this template (or similar enough to this template)
 
 ## Gondor OS greeter configuration
 
-SDDM with the Astronaut theme is the image's login manager. Configuration is
-managed through `system_files/etc/` and can also be edited in `/etc` on the
-installed system. See [SDDM customization and use](docs/sddm.md).
+Noctalia Greeter, launched by greetd, is the image's default login manager. The
+build installs `noctalia-greeter` explicitly from Terra, which is already shipped
+by the Bazzite base. It does not enable the Lionheart COPR.
 
-Noctalia Greeter is archived under [`archive/noctalia-greeter`](archive/noctalia-greeter/README.md),
-including its configuration and a restoration command.
+Configuration is managed through `system_files/etc/` and can also be edited in
+`/etc` on the installed system. See [Noctalia Greeter configuration and use](docs/noctalia-greeter.md).
+The previous SDDM and Astronaut setup is preserved under
+[`archive/sddm`](archive/sddm/README.md) and excluded from the active build.

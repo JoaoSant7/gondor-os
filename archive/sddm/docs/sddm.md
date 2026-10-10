@@ -1,7 +1,10 @@
 # SDDM customization and use
 
-SDDM with Astronaut is the login manager. Noctalia Greeter is
-[archived](../archive/noctalia-greeter/README.md).
+SDDM with Astronaut is archived under `archive/sddm` and excluded from the
+active image. Before following this guide, run
+`python3 archive/sddm/restore.py` from the repository root, then rebuild and
+deploy the image. Restoration selects SDDM as the default and keeps Noctalia
+installed.
 
 ## Configuration
 
@@ -11,7 +14,8 @@ SDDM with Astronaut is the login manager. Noctalia Greeter is
 | `system_files/etc/sddm/astronaut/metadata.desktop` | Astronaut preset selector |
 | `system_files/etc/sddm/astronaut/theme.conf.user` | Appearance overrides |
 
-Edit these files and rebuild for image defaults, or edit their installed `/etc`
+After restoring the archive, edit these files and rebuild for image defaults,
+or edit their installed `/etc`
 paths with administrator privileges. Keep files root-owned and readable (0644).
 Local `/etc` edits survive bootc updates and can override new image defaults.
 
@@ -55,10 +59,9 @@ picker; SDDM remembers the last user and session. To inspect login problems:
 journalctl -b -u sddm.service
 ```
 
-If an existing installation still selects greetd, switch to SDDM for the next
-boot, then reboot:
+Switch to SDDM for the next boot, then reboot:
 
 ```bash
-sudo systemctl mask greetd.service
-sudo systemctl enable --force sddm.service
+ujust gondor-greeter sddm
+sudo reboot
 ```
