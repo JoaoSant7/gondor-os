@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ouex pipefail
 
-#dnf5 install -y terra-release
+#dnf5 install -y terra-release -- terra is already included on bazzite
 #dnf5 -y copr enable lionheartp/Hyprland
 
 # apps
