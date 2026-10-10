@@ -2,11 +2,7 @@
 set -ouex pipefail
 
 #dnf5 install -y terra-release
-dnf5 -y copr enable lionheartp/Hyprland
-
-# Exclude Kitty and its subpackages from this COPR.
-dnf5 config-manager setopt \
-  'copr:copr.fedorainfracloud.org:lionheartp:Hyprland.excludepkgs=kitty*'
+#dnf5 -y copr enable lionheartp/Hyprland
 
 # apps
 dnf5 install -y \
