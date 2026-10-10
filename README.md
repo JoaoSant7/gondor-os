@@ -319,48 +319,9 @@ These are images derived from this template (or similar enough to this template)
 
 ## Gondor OS greeter configuration
 
-Greetd launches `/usr/bin/noctalia-greeter-session` as `greetd`. Noctalia's
-administrator configuration is shipped at `/etc/noctalia-greeter/greeter.toml`;
-edit that file with administrator privileges for machine-specific settings.
-Tmpfiles creates `/var/lib/noctalia-greeter` with `greetd:greetd` ownership and
-links its `greeter.toml` to the `/etc` file. The greetd RPM supplies its home
-folder's tmpfiles rule. The build reuses a packaged sysusers definition or
-ships a fallback so the account is available before tmpfiles runs at boot.
+SDDM with the Astronaut theme is the image's login manager. Configuration is
+managed through `system_files/etc/` and can also be edited in `/etc` on the
+installed system. See [SDDM customization and use](docs/sddm.md).
 
-Appearance sync and remembered UI state remain in `/var/lib/noctalia-greeter`,
-which persists across image upgrades. Declarative settings override synced
-values: theme mode, font, corner radius, palette, wallpaper, and monitor layout
-are left unset to allow Sync to manage them. The default login user (`pedro`),
-Hyprland session, hidden logo, keyboard, cursor, and idle preferences remain
-explicit. Remove `session.default` if the last selected session should win.
-
-Use Noctalia's Security settings to sync the greeter. Install fonts system-wide
-so the greeter account can read them. Keep the packaged authorization policy;
-no extra passwordless policy is installed by this image.
-
-### Migrating an existing installation
-
-The non-replacing tmpfiles `L` rule intentionally preserves an existing file or
-symlink. After booting the updated image, check:
-
-```bash
-ls -l /var/lib/noctalia-greeter/greeter.toml
-```
-
-If it is already linked to `/etc/noctalia-greeter/greeter.toml`, no migration is
-needed. Otherwise, preserve the previous effective configuration and link it:
-
-```bash
-sudo install -d -m 0755 /etc/noctalia-greeter
-sudo cp -L /var/lib/noctalia-greeter/greeter.toml /etc/noctalia-greeter/greeter.toml
-sudo mv /var/lib/noctalia-greeter/greeter.toml \
-  "/var/lib/noctalia-greeter/greeter.toml.backup-$(date +%Y%m%d-%H%M%S)"
-sudo systemd-tmpfiles --create /etc/tmpfiles.d/noctalia-greeter.conf
-```
-
-If the old file is absent, skip the copy and move: the image's `/etc` defaults
-are already available. Preserving the previous config also preserves its pinned
-appearance settings; remove `theme_mode`, `font_family`, and
-`corner_radius_scale` from the `/etc` file to allow Sync to control them.
-Leave `sync.toml` and wallpapers in place. Log out to test the greeter;
-restarting greetd from an active session can terminate it.
+Noctalia Greeter is archived under [`archive/noctalia-greeter`](archive/noctalia-greeter/README.md),
+including its configuration and a restoration command.
