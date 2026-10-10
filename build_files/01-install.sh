@@ -58,6 +58,7 @@ dnf5 install -y \
 
 # greeter
 dnf5 install -y \
+  sddm \
   greetd
 
 # theming
