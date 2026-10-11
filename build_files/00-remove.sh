@@ -21,6 +21,7 @@ rm -f /usr/share/applications/system-update.desktop
 dnf remove -y \
   lutris \
   waydroid \
+  waydroid-nvidia \
   waydroid-selinux \
   input-remapper \
   mariadb \
